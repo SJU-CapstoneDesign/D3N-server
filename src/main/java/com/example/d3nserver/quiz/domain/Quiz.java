@@ -14,6 +14,7 @@ public class Quiz extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String question;
     @ElementCollection
     private List<String> choiceList;
     private Integer answer;
@@ -21,4 +22,5 @@ public class Quiz extends BaseEntity{
     @JsonBackReference
     @JoinColumn(name="news_id")
     private News news;
+    private String reason;
 }
