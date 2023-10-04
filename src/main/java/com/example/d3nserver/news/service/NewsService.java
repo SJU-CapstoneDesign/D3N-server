@@ -33,9 +33,9 @@ public class NewsService {
         List<News> recentTenNews = newsRepository.findTop10ByOrderByCreatedAtDesc();
 
 
-        //뉴스 DTO를 생성하면서, 생성된 뉴스 DTO와 퀴즈 DTO 리스트를 매핑
+        //뉴스 DTO를 생성
         for(News news : recentTenNews){
-            NewsDTO newsDTO = new NewsDTO(news, quizService.getQuizDtoList(news));
+            NewsDTO newsDTO = new NewsDTO(news);
 
             todayNewsDtoList.add(newsDTO);
         }
