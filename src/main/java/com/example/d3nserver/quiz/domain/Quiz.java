@@ -12,7 +12,6 @@ import java.util.List;
 @Getter
 public class Quiz extends BaseEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String question;
     @ElementCollection

@@ -12,9 +12,10 @@ import java.util.List;
 @Getter @Setter
 public class News extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private Field field;
+    @Enumerated(EnumType.STRING)
     private NewsType newsType;
     private String title;
     private String summary;
