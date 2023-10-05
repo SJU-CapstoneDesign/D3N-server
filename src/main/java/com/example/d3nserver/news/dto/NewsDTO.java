@@ -1,17 +1,16 @@
-package com.example.d3nserver.dto;
+package com.example.d3nserver.news.dto;
 
+import com.example.d3nserver.quiz.dto.QuizDTO;
 import com.example.d3nserver.news.domain.Field;
 import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.news.domain.NewsType;
-import com.example.d3nserver.quiz.domain.Quiz;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Getter @Setter
+@Data
 @NoArgsConstructor
 public class NewsDTO {
 
@@ -21,10 +20,7 @@ public class NewsDTO {
     private String summary;
     private String content;
     private String url;
-
     private List<QuizDTO> quizList;
-
-
 
     public NewsDTO(News news){
         this.field = news.getField();
@@ -33,13 +29,6 @@ public class NewsDTO {
         this.summary = news.getSummary();
         this.content = news.getContent();
         this.url = news.getUrl();
-    
-        //QuizDTO 리스트 생성
-        for(Quiz quiz : news.getQuizList()){
-
-            QuizDTO quizDTO = new QuizDTO(quiz);
-
-            quizList.add(quizDTO);
-        }
+        this.quizList = news.getQuizList().stream().map(QuizDTO::new).collect(Collectors.toList());
     }
 }

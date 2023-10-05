@@ -9,8 +9,5 @@ import java.util.List;
 
 @Repository
 public interface NewsRepository extends JpaRepository<News, Integer> {
-    public List<News> findAllByField(Field field);
-
-    public List<News> findTop10ByOrderByCreatedAtDesc();
-
+    List<News> findTop10ByOrderByCreatedAtDesc();
 }
