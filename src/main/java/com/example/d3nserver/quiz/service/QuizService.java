@@ -14,13 +14,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuizService {
     private final QuizRepository quizRepository;
-    public List<QuizDTO> getQuizDtoList(News news){
-        List<QuizDTO> quizDtoList = new ArrayList<>();
-        List<Quiz> quizList = quizRepository.findAllByNews(news);
-        for(Quiz quiz : quizList){
-            QuizDTO quizDTO = new QuizDTO(quiz);
-            quizDtoList.add(quizDTO);
-        }
-        return quizDtoList;
-    }
+//    public List<QuizDTO> getQuizDtoList(News news){
+//        List<QuizDTO> quizDtoList = new ArrayList<>();
+//        List<Quiz> quizList = quizRepository.findAllByNews(news);
+//        for(Quiz quiz : quizList){
+//            QuizDTO quizDTO = new QuizDTO(quiz);
+//            quizDtoList.add(quizDTO);
+//        }
+//        return quizDtoList;
+//    }
 }

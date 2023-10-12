@@ -6,6 +6,8 @@ import com.example.d3nserver.news.repository.NewsRepository;
 import com.example.d3nserver.quiz.repository.QuizRepository;
 import com.example.d3nserver.quiz.service.QuizService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,4 +27,13 @@ public class NewsService {
         }
         return todayNewsDtoList;
     }
+
+    public Page<NewsDTO> getAllNewsDtoPageList(int pageIndex, int pageSize){
+        List<NewsDTO> allNewsDtoList = new ArrayList<>();
+        PageRequest pageRequest = PageRequest.of(pageIndex, pageSize);
+        Page<News> allNewsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(pageRequest);
+
+        return allNewsPage.map(NewsDTO::new);
+    }
+
 }
