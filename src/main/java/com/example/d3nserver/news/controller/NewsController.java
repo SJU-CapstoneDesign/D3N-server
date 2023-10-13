@@ -2,6 +2,7 @@ package com.example.d3nserver.news.controller;
 
 import com.example.d3nserver.common.BaseResponse;
 import com.example.d3nserver.news.dto.NewsDTO;
+import com.example.d3nserver.news.dto.NewsResponseDto;
 import com.example.d3nserver.news.repository.NewsRepository;
 import com.example.d3nserver.news.service.NewsService;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +21,14 @@ import java.util.List;
 public class NewsController {
     private final NewsService newsService;
 
+    // TODO: iOS 측 마이그레이션 끝나면 삭제
     @GetMapping("/list/today")
     public BaseResponse<List<NewsDTO>> getTodayNews() {
         return BaseResponse.ofSuccess(newsService.getTodayNewsDtoList());
     }
 
     @GetMapping("/list")
-    public BaseResponse<Page<NewsDTO>> getAllNews(@RequestParam int pageIndex, @RequestParam int pageSize) {
+    public BaseResponse<Page<NewsResponseDto>> getAllNews(@RequestParam int pageIndex, @RequestParam int pageSize) {
         return BaseResponse.ofSuccess(newsService.getAllNewsDtoPageList(pageIndex, pageSize));
     }
 

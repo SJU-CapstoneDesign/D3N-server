@@ -2,6 +2,7 @@ package com.example.d3nserver.news.service;
 
 import com.example.d3nserver.news.dto.NewsDTO;
 import com.example.d3nserver.news.domain.News;
+import com.example.d3nserver.news.dto.NewsResponseDto;
 import com.example.d3nserver.news.repository.NewsRepository;
 import com.example.d3nserver.quiz.repository.QuizRepository;
 import com.example.d3nserver.quiz.service.QuizService;
@@ -28,12 +29,8 @@ public class NewsService {
         return todayNewsDtoList;
     }
 
-    public Page<NewsDTO> getAllNewsDtoPageList(int pageIndex, int pageSize){
-        List<NewsDTO> allNewsDtoList = new ArrayList<>();
-        PageRequest pageRequest = PageRequest.of(pageIndex, pageSize);
-        Page<News> allNewsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(pageRequest);
-
-        return allNewsPage.map(NewsDTO::new);
+    public Page<NewsResponseDto> getAllNewsDtoPageList(int pageIndex, int pageSize){
+        Page<News> allNewsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
+        return allNewsPage.map(NewsResponseDto::new);
     }
-
 }
