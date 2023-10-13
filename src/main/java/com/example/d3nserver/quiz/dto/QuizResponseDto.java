@@ -5,14 +5,14 @@ import lombok.Data;
 
 import java.util.List;
 @Data
-public class QuizDTO {
+public class QuizResponseDto {
 
     private String question;
     private List<String> choiceList;
     private Integer answer;
     private String reason;
 
-    public QuizDTO(Quiz quiz){
+    public QuizResponseDto(Quiz quiz){
         this.question = quiz.getQuestion();
         this.choiceList = quiz.getChoiceList();
         this.answer = quiz.getAnswer();

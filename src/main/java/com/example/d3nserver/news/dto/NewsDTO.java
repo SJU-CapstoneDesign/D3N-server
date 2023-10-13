@@ -1,9 +1,9 @@
 package com.example.d3nserver.news.dto;
 
-import com.example.d3nserver.quiz.dto.QuizDTO;
 import com.example.d3nserver.news.domain.Field;
 import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.news.domain.NewsType;
+import com.example.d3nserver.quiz.dto.QuizResponseDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +20,7 @@ public class NewsDTO {
     private String summary;
     private String content;
     private String url;
-    private List<QuizDTO> quizList;
+    private List<QuizResponseDto> quizList;
 
     public NewsDTO(News news){
         this.field = news.getField();
@@ -29,6 +29,6 @@ public class NewsDTO {
         this.summary = news.getSummary();
         this.content = news.getContent();
         this.url = news.getUrl();
-        this.quizList = news.getQuizList().stream().map(QuizDTO::new).collect(Collectors.toList());
+        this.quizList = news.getQuizList().stream().map(QuizResponseDto::new).collect(Collectors.toList());
     }
 }
