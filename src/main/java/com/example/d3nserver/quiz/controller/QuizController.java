@@ -1,5 +1,6 @@
 package com.example.d3nserver.quiz.controller;
 
+import com.example.d3nserver.common.BaseResponse;
 import com.example.d3nserver.quiz.dto.QuizResponseDto;
 import com.example.d3nserver.quiz.service.QuizService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 public class QuizController {
     private final QuizService quizService;
     @GetMapping(value = "/list")
-    public List<QuizResponseDto> getQuizList(@RequestParam Long newsId){
-        return quizService.getQuizList(newsId);
+    public BaseResponse<List<QuizResponseDto>> getQuizList(@RequestParam Long newsId){
+        return BaseResponse.ofSuccess(quizService.getQuizList(newsId));
     }
 }
