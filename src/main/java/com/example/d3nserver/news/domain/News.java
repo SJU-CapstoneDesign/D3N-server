@@ -1,6 +1,7 @@
 package com.example.d3nserver.news.domain;
 
 import com.example.d3nserver.common.BaseEntity;
+import com.example.d3nserver.mediaCompany.domain.MediaCompany;
 import com.example.d3nserver.quiz.domain.Quiz;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class News extends BaseEntity {
     private String url;
     @OneToMany(mappedBy = "news", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Quiz> quizList;
-
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "media_company_id")
+    private MediaCompany mediaCompany;
 }

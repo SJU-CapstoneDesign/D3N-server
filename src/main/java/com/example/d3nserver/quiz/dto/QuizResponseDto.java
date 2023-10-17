@@ -7,12 +7,14 @@ import java.util.List;
 @Data
 public class QuizResponseDto {
 
+    private Long id;
     private String question;
     private List<String> choiceList;
     private Integer answer;
     private String reason;
 
     public QuizResponseDto(Quiz quiz){
+        this.id = quiz.getId();
         this.question = quiz.getQuestion();
         this.choiceList = quiz.getChoiceList();
         this.answer = quiz.getAnswer();
