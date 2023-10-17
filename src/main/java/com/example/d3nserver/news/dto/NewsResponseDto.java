@@ -13,6 +13,9 @@ public class NewsResponseDto {
     private String title;
     private String summary;
     private String url;
+    private String mediaCompanyId;
+    private String mediaCompanyLogo;
+    private String mediaCompanyName;
 
     public NewsResponseDto(News news) {
         this.id = news.getId();
@@ -21,5 +24,8 @@ public class NewsResponseDto {
         this.title = news.getTitle();
         this.summary = news.getSummary();
         this.url = news.getUrl();
+        this.mediaCompanyId = news.getMediaCompany().getId();
+        this.mediaCompanyLogo = news.getMediaCompany().getLogo();
+        this.mediaCompanyName = news.getMediaCompany().getName();
     }
 }

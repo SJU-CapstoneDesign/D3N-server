@@ -24,7 +24,7 @@ public class News extends BaseEntity {
     private String url;
     @OneToMany(mappedBy = "news", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Quiz> quizList;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "media_company_id")
     private MediaCompany mediaCompany;
 }
