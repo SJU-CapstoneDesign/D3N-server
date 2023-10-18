@@ -3,7 +3,10 @@ package com.example.d3nserver.news.dto;
 import com.example.d3nserver.news.domain.Field;
 import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.news.domain.NewsType;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import lombok.Data;
+
 
 @Data
 public class NewsResponseDto {
@@ -21,11 +24,16 @@ public class NewsResponseDto {
         this.id = news.getId();
         this.field = news.getField();
         this.newsType = news.getNewsType();
-        this.title = news.getTitle();
-        this.summary = news.getSummary();
+        this.title = excludingHtmlTag(news.getTitle());
+        this.summary = excludingHtmlTag(news.getSummary());
         this.url = news.getUrl();
         this.mediaCompanyId = news.getMediaCompany().getId();
         this.mediaCompanyLogo = news.getMediaCompany().getLogo();
         this.mediaCompanyName = news.getMediaCompany().getName();
+    }
+
+    public String excludingHtmlTag(String htmlContent){
+        Document doc = Jsoup.parse(htmlContent);
+        return doc.text();
     }
 }
