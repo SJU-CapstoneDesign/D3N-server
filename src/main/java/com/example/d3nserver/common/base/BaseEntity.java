@@ -1,4 +1,4 @@
-package com.example.d3nserver.common;
+package com.example.d3nserver.common.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

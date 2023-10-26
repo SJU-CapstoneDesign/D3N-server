@@ -1,4 +1,4 @@
-package com.example.d3nserver.common;
+package com.example.d3nserver.common.base;
 
 import lombok.Getter;
 
@@ -6,7 +6,7 @@ import lombok.Getter;
 public class BaseResponse<T> {
     private final Boolean success;
     private final T result;
-    private final BaseException error;
+    private final BaseExceptionResponse error;
 
     public BaseResponse(T result) {
         this.success = true;
