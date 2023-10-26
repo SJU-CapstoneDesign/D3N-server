@@ -5,20 +5,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Getter @Setter
-public class User extends BaseEntity {
+import java.time.LocalDate;
+import java.util.List;
 
+@Entity
+@Getter
+@Setter
+public class User extends BaseEntity {
     @Id
     private Long id;
-
     @Column(unique = true)
     private String nickname;
-
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    private int age;
-
-
+    private Integer birthYear;
+    @ElementCollection
+    private List<Integer> scrapList;
+    private String appleRefreshToken;
+    private String refreshToken;
+    @Enumerated(EnumType.STRING)
+    private MemberProvider memberProvider;
 }
