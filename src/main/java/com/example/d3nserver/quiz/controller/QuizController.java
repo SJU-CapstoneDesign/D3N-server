@@ -1,6 +1,6 @@
 package com.example.d3nserver.quiz.controller;
 
-import com.example.d3nserver.common.BaseResponse;
+import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.quiz.dto.QuizResponseDto;
 import com.example.d3nserver.quiz.service.QuizService;
 import lombok.RequiredArgsConstructor;

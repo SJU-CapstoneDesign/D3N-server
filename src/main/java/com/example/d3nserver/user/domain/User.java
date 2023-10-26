@@ -1,6 +1,6 @@
 package com.example.d3nserver.user.domain;
 
-import com.example.d3nserver.common.BaseEntity;
+import com.example.d3nserver.common.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

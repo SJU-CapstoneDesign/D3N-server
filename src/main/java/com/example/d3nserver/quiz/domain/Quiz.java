@@ -1,6 +1,6 @@
 package com.example.d3nserver.quiz.domain;
 
-import com.example.d3nserver.common.BaseEntity;
+import com.example.d3nserver.common.base.BaseEntity;
 import com.example.d3nserver.news.domain.News;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

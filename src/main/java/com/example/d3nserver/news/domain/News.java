@@ -1,6 +1,6 @@
 package com.example.d3nserver.news.domain;
 
-import com.example.d3nserver.common.BaseEntity;
+import com.example.d3nserver.common.base.BaseEntity;
 import com.example.d3nserver.mediaCompany.domain.MediaCompany;
 import com.example.d3nserver.quiz.domain.Quiz;
 import jakarta.persistence.*;
