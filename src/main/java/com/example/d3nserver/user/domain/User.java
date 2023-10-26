@@ -20,6 +20,8 @@ public class User extends BaseEntity {
     private Gender gender;
     private Integer birthYear;
     @ElementCollection
+    private List<String> categoryList;
+    @ElementCollection
     private List<Integer> scrapList;
     private String appleRefreshToken;
     private String refreshToken;
