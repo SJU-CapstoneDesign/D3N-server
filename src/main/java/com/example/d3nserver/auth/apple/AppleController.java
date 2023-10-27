@@ -18,7 +18,7 @@ public class AppleController {
     private final AppleAuthService appleAuthService;
     @PostMapping(value="/login")
     @ResponseBody
-    public BaseResponse<AuthResponse> appleLogin(AppleLoginRequest appleLoginRequest) throws org.json.simple.parser.ParseException, IOException {
+    public BaseResponse<AuthResponse> appleLogin(@RequestBody AppleLoginRequest appleLoginRequest) throws org.json.simple.parser.ParseException, IOException {
         AuthResponse authResponse = appleAuthService.login(appleLoginRequest);
         return BaseResponse.ofSuccess(authResponse);
     }

@@ -5,7 +5,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 application.yml
-AuthKey_N385VB8T3X.p8
+AuthKey_*
+.DS_Store
 
 ### STS ###
 .apt_generated

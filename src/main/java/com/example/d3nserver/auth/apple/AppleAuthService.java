@@ -92,7 +92,7 @@ public class AppleAuthService {
         String clientSecret = this.createClientSecret();
 
         RestTemplate restTemplate = new RestTemplateBuilder().build();
-        String authUrl = "https://appleid.apple.com/auth/revoke";
+        String authUrl = "https://appleid.apple.com/auth/oauth2/v2/revoke";
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("client_id", clientId);
@@ -126,7 +126,6 @@ public class AppleAuthService {
 
     private PrivateKey getPrivateKey() throws IOException {
         ClassPathResource resource = new ClassPathResource("static/AuthKey_" + keyId + ".p8");
-        System.out.println(resource.getURI());
         String privateKey = new String(resource.getInputStream().readAllBytes());
         Reader pemReader = new StringReader(privateKey);
         PEMParser pemParser = new PEMParser(pemReader);
@@ -137,7 +136,7 @@ public class AppleAuthService {
 
     public AppleAuthTokenResponse GenerateAuthToken(String code, String client_secret) {
         RestTemplate restTemplate = new RestTemplateBuilder().build();
-        String authUrl = "https://appleid.apple.com/auth/token";
+        String authUrl = "https://appleid.apple.com/auth/oauth2/v2/token";
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("code", code);

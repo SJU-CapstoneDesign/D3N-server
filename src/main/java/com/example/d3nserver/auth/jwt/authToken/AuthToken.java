@@ -69,7 +69,6 @@ public class AuthToken {
             throw new BaseException(BaseResponseStatus.INVALID_JWT_TOKEN);
         } catch (IllegalArgumentException e) {
             log.info("JWT token compact of handler are invalid.");
-            System.out.println(e.getMessage());
             throw new BaseException(BaseResponseStatus.INVALID_JWT_TOKEN);
         }
     }
