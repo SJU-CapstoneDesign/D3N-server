@@ -44,4 +44,5 @@ public class User extends BaseEntity {
         this.id = id;
         this.roleType = roleType;
     }
+
 }
