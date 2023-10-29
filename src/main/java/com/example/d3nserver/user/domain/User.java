@@ -1,6 +1,7 @@
 package com.example.d3nserver.user.domain;
 
 import com.example.d3nserver.common.base.BaseEntity;
+import com.example.d3nserver.news.domain.Field;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +22,9 @@ public class User extends BaseEntity {
     private Gender gender;
     private Integer birthYear;
     @ElementCollection
-    private List<String> categoryList;
+    @CollectionTable(name = "user_category_list", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
+    private List<Field> categoryList;
     @ElementCollection
     private List<Integer> scrapList;
     private String appleRefreshToken;

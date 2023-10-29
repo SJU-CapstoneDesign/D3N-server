@@ -28,7 +28,8 @@ public class SecurityConfig{
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring().requestMatchers(
                 "/api/v1/auth/apple/login",
-                "/api/v2/auth/refresh"
+                "/api/v2/auth/refresh",
+                "/api/v1/user/userForm/save"
         );
     }
     @Bean
