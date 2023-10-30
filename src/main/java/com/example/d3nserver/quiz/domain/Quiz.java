@@ -17,13 +17,9 @@ public class Quiz extends BaseEntity{
     @ElementCollection
     private List<String> choiceList;
     private Integer answer;
-
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name="news_id")
     private News news;
     private String reason;
-
-
-
 }

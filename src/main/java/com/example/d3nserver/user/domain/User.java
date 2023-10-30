@@ -2,11 +2,14 @@ package com.example.d3nserver.user.domain;
 
 import com.example.d3nserver.common.base.BaseEntity;
 import com.example.d3nserver.news.domain.Field;
+import com.example.d3nserver.quiz.domain.SolvedQuiz;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,17 +25,19 @@ public class User extends BaseEntity {
     private Gender gender;
     private Integer birthYear;
     @ElementCollection
-    @CollectionTable(name = "user_category_list", joinColumns = @JoinColumn(name = "id"))
     @Enumerated(EnumType.STRING)
-    private List<Field> categoryList;
+    private List<Field> categoryList = new ArrayList<>();
     @ElementCollection
-    private List<Integer> scrapList;
+    private List<Integer> scrapList = new ArrayList<>();
     private String appleRefreshToken;
     private String refreshToken;
     @Enumerated(EnumType.STRING)
     private MemberProvider memberProvider;
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
+    @ElementCollection
+    @Embedded
+    private List<SolvedQuiz> solvedQuizList = new ArrayList<>();
 
     @Builder
     public User(String id, String appleRefreshToken, String refreshToken, MemberProvider memberProvider, RoleType roleType) {
