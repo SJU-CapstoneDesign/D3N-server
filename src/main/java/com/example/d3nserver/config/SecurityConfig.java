@@ -7,7 +7,6 @@ import com.example.d3nserver.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -28,7 +27,14 @@ public class SecurityConfig{
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring().requestMatchers(
                 "/api/v1/auth/apple/login",
-                "/api/v2/auth/refresh"
+                "/api/v1/auth/refresh",
+                "/api/v1/usage",
+                "/swagger-ui/**",
+                "/v3/api-docs/**",
+                /**
+                 * Todo: 프론트에서 로그인 작업 완료하면 제거
+                 */
+                "/api/v1/**"
         );
     }
     @Bean
