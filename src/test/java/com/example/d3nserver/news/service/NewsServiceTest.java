@@ -19,9 +19,6 @@ class NewsServiceTest {
     @Test
     void getTodayNewsDtoList() {
         List<NewsDTO> todayNewsDtoList = newsService.getTodayNewsDtoList();
-
-        System.out.println(todayNewsDtoList.get(0).getTitle());
-        System.out.println(todayNewsDtoList.get(0).getSummary());
     }
 
     @Test

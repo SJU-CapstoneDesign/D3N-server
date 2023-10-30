@@ -1,13 +1,11 @@
 package com.example.d3nserver.news.controller;
 
-import com.example.d3nserver.common.BaseResponse;
+import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.news.dto.NewsDTO;
 import com.example.d3nserver.news.dto.NewsResponseDto;
-import com.example.d3nserver.news.repository.NewsRepository;
 import com.example.d3nserver.news.service.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
