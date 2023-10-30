@@ -24,12 +24,6 @@ import java.util.List;
 public class NewsController {
     private final NewsService newsService;
 
-    // TODO: iOS 측 마이그레이션 끝나면 삭제
-    @GetMapping("/list/today")
-    public BaseResponse<List<NewsDTO>> getTodayNews() {
-        return BaseResponse.ofSuccess(newsService.getTodayNewsDtoList());
-    }
-
     @Operation(summary = "News list", description = "뉴스 id를 입력받아 해당하는 뉴스의 퀴즈 리스트를 반환한다.")
     @GetMapping("/list")
     public BaseResponse<Page<NewsResponseDto>> getAllNews(@RequestParam @Parameter(description="페이지 인덱스, 0부터 시작")int pageIndex, @RequestParam @Parameter(description="페이지 크기")int pageSize) {
