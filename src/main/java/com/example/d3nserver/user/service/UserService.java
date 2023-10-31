@@ -1,7 +1,9 @@
 package com.example.d3nserver.user.service;
 
+import com.example.d3nserver.auth.jwt.ReqUser;
 import com.example.d3nserver.user.domain.RoleType;
 import com.example.d3nserver.user.domain.User;
+import com.example.d3nserver.user.dto.UserDataFormDto;
 import com.example.d3nserver.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,14 @@ public class UserService {
 
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    public User saveUserForm(User user, UserDataFormDto inputForm){
+        user.setNickname(inputForm.getNickname());
+        user.setGender(inputForm.getGender());
+        user.setBirthYear(inputForm.getBirthYear());
+        user.setCategoryList(inputForm.getCategoryList());
+        save(user);
+        return user;
     }
 }

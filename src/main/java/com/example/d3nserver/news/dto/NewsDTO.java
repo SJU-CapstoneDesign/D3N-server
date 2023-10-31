@@ -1,5 +1,6 @@
 package com.example.d3nserver.news.dto;
 
+import com.example.d3nserver.common.annotation.ValidEnum;
 import com.example.d3nserver.news.domain.Field;
 import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.news.domain.NewsType;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
