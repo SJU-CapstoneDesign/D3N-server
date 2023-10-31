@@ -35,8 +35,7 @@ public class User extends BaseEntity {
     private MemberProvider memberProvider;
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
-    @ElementCollection
-    @Embedded
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<SolvedQuiz> solvedQuizList = new ArrayList<>();
 
     @Builder
