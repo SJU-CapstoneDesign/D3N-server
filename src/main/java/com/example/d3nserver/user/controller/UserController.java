@@ -1,5 +1,6 @@
 package com.example.d3nserver.user.controller;
 
+import com.example.d3nserver.auth.jwt.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.user.dto.UserDataFormDto;
 import com.example.d3nserver.user.domain.User;
@@ -15,15 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/userForm/save")
-    public BaseResponse<User> userFormSave(@RequestBody UserDataFormDto inputForm, @RequestParam("id") String id){
-        User findUser = userService.findById(id).get();
-        findUser.setNickname(inputForm.getNickname());
-        findUser.setGender(inputForm.getGender());
-        findUser.setBirthYear(inputForm.getBirthYear());
-        findUser.setCategoryList(inputForm.getCategoryList());
-        userService.save(findUser);
-        return BaseResponse.ofSuccess(findUser);
+    @PostMapping("/userForm/onboarding")
+    public BaseResponse<User> saveUserForm(@ReqUser User user, @RequestBody UserDataFormDto inputForm){
+        return BaseResponse.ofSuccess(userService.saveUserForm(user,inputForm));
     }
 
 }
