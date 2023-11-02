@@ -1,6 +1,6 @@
-package com.example.d3nserver.auth.common;
+package com.example.d3nserver.auth.authToken.service;
 
-import com.example.d3nserver.auth.common.response.AuthResponse;
+import com.example.d3nserver.auth.authToken.response.AuthResponse;
 import com.example.d3nserver.auth.jwt.authToken.AuthToken;
 import com.example.d3nserver.auth.jwt.provider.AuthTokenProvider;
 import com.example.d3nserver.common.base.BaseException;

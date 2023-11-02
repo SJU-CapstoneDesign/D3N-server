@@ -1,18 +1,13 @@
-package com.example.d3nserver.auth.common;
+package com.example.d3nserver.auth.authToken.controller;
 
-import com.example.d3nserver.auth.common.response.AuthResponse;
-import com.example.d3nserver.auth.jwt.authToken.AuthToken;
-import com.example.d3nserver.auth.jwt.provider.AuthTokenProvider;
+import com.example.d3nserver.auth.authToken.response.AuthResponse;
+import com.example.d3nserver.auth.authToken.service.AuthService;
 import com.example.d3nserver.common.base.BaseException;
 import com.example.d3nserver.common.base.BaseResponse;
-import com.example.d3nserver.common.base.BaseResponseStatus;
-import com.example.d3nserver.user.domain.User;
-import com.example.d3nserver.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
