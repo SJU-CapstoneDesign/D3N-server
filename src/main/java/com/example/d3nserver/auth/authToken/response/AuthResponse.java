@@ -1,4 +1,4 @@
-package com.example.d3nserver.auth.common.response;
+package com.example.d3nserver.auth.authToken.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
