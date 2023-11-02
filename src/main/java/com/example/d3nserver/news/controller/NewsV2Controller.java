@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "News v2 API", description = "News 관련 api")
+@Tag(name = "News v1.1 API", description = "News 관련 api")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/v1.1/news")
