@@ -29,16 +29,13 @@ public class SecurityConfig{
                 "/api/v1/auth/apple/login",
                 "/api/v1/auth/refresh",
                 "/api/v2/auth/refresh",
-                "/api/v1/usage",
                 "/swagger-ui/**",
                 "/v3/api-docs/**",
-                "/api/v1/user/userForm/save",
-                "/api/v1/quiz/list/submit",
-                "/api/v1/news/list"
                 /**
                  * Todo: 프론트에서 로그인 작업 완료하면 제거
                  */
-                "/api/v1/**"
+                "/api/v1/**",
+                "/api/v1.1/**"
         );
     }
     @Bean
