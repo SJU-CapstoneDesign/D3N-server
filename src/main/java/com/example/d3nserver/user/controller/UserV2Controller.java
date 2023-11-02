@@ -5,6 +5,7 @@ import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
+import com.example.d3nserver.user.dto.IsOnBoardingNeededResponseDto;
 import com.example.d3nserver.user.dto.UserDataFormDto;
 import com.example.d3nserver.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,10 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,6 +42,12 @@ public class UserV2Controller {
     @PostMapping("/list/incorrect")
     public ResponseEntity<List<SolvedQuizResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
         return ResponseDto.ok(solvedQuizService.getUserIncorrectQuizList(user));
+    }
+
+    @Operation(summary = "User 온보딩 필요 여부", description = "온보딩 과정이 필요한 유저인지 반환한다.")
+    @GetMapping("/onboard/needed")
+    public ResponseEntity<IsOnBoardingNeededResponseDto> getIsOnBoardingNeeded(@ReqUser User user){
+        return ResponseDto.ok(userService.getIsOnBoardingNeeded(user));
     }
 
 }
