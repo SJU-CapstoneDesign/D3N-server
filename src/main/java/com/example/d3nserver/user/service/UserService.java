@@ -3,6 +3,7 @@ package com.example.d3nserver.user.service;
 import com.example.d3nserver.auth.jwt.ReqUser;
 import com.example.d3nserver.user.domain.RoleType;
 import com.example.d3nserver.user.domain.User;
+import com.example.d3nserver.user.dto.IsOnBoardingNeededResponseDto;
 import com.example.d3nserver.user.dto.UserDataFormDto;
 import com.example.d3nserver.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,5 +43,9 @@ public class UserService {
         user.setCategoryList(inputForm.getCategoryList());
         save(user);
         return user;
+    }
+
+    public IsOnBoardingNeededResponseDto getIsOnBoardingNeeded(User user){
+        return new IsOnBoardingNeededResponseDto(user);
     }
 }
