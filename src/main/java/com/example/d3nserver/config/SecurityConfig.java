@@ -30,7 +30,8 @@ public class SecurityConfig{
                 "/api/v1/auth/apple/login",
                 "/api/v2/auth/refresh",
                 "/api/v1/user/userForm/save",
-                "/api/v1/quiz/list/submit"
+                "/api/v1/quiz/list/submit",
+                "/api/v1/news/list"
         );
     }
     @Bean

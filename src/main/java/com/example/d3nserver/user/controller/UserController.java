@@ -21,17 +21,17 @@ public class UserController {
     private final UserService userService;
     private final SolvedQuizService solvedQuizService;
 
-    @PostMapping("/userForm/onboarding")
+    @PostMapping("/onboard")
     public BaseResponse<User> saveUserForm(@ReqUser User user, @RequestBody UserDataFormDto inputForm){
         return BaseResponse.ofSuccess(userService.saveUserForm(user,inputForm));
     }
 
-    @PostMapping("/solvedQuizList")
+    @PostMapping("/list/solved")
     public BaseResponse<List<SolvedQuizResponseDto>> getUserSolvedQuizList(@ReqUser User user){
         return BaseResponse.ofSuccess(solvedQuizService.getUserSolvedQuizList(user));
     }
 
-    @PostMapping("/incorrectQuizList")
+    @PostMapping("/list/incorrect")
     public BaseResponse<List<SolvedQuizResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
         return BaseResponse.ofSuccess(solvedQuizService.getUserIncorrectQuizList(user));
     }
