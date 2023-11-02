@@ -2,7 +2,6 @@ package com.example.d3nserver.auth.jwt.filter;
 
 import com.example.d3nserver.auth.jwt.authToken.AuthToken;
 import com.example.d3nserver.auth.jwt.provider.AuthTokenProvider;
-import com.example.d3nserver.auth.jwt.securityUserDetails.SecurityUserDetails;
 import com.example.d3nserver.auth.jwt.securityUserDetails.SecurityUserDetailsService;
 import com.example.d3nserver.common.base.BaseException;
 import com.example.d3nserver.common.base.BaseResponseStatus;
@@ -12,7 +11,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
