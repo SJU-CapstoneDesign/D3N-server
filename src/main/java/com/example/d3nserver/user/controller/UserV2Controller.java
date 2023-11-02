@@ -2,6 +2,7 @@ package com.example.d3nserver.user.controller;
 
 import com.example.d3nserver.auth.jwt.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
+import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
@@ -11,6 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,20 +31,20 @@ public class UserV2Controller {
 
     @Operation(summary = "User 온보딩", description = "온보딩 데이터를 받아 user에 저장한다.")
     @PostMapping("/onboard")
-    public BaseResponse<User> saveUserForm(@ReqUser User user, @RequestBody UserDataFormDto inputForm){
-        return BaseResponse.ofSuccess(userService.saveUserForm(user,inputForm));
+    public ResponseEntity<User> saveUserForm(@ReqUser User user, @RequestBody UserDataFormDto inputForm){
+        return ResponseDto.ok(userService.saveUserForm(user,inputForm));
     }
 
     @Operation(summary = "User 푼 문제 리스트", description = "해당 유저가 푼 문제 리스트를 반환한다.")
     @PostMapping("/list/solved")
-    public BaseResponse<List<SolvedQuizResponseDto>> getUserSolvedQuizList(@ReqUser User user){
-        return BaseResponse.ofSuccess(solvedQuizService.getUserSolvedQuizList(user));
+    public ResponseEntity<List<SolvedQuizResponseDto>> getUserSolvedQuizList(@ReqUser User user){
+        return ResponseDto.ok(solvedQuizService.getUserSolvedQuizList(user));
     }
 
     @Operation(summary = "User 틀린 문제 리스트", description = "해당 유저가 푼 문제 중 틀린 문제 리스트를 반환한다.")
     @PostMapping("/list/incorrect")
-    public BaseResponse<List<SolvedQuizResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
-        return BaseResponse.ofSuccess(solvedQuizService.getUserIncorrectQuizList(user));
+    public ResponseEntity<List<SolvedQuizResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
+        return ResponseDto.ok(solvedQuizService.getUserIncorrectQuizList(user));
     }
 
 }
