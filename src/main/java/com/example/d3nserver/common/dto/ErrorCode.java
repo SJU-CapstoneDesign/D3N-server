@@ -1,10 +1,10 @@
-package com.example.d3nserver.common.base;
+package com.example.d3nserver.common.dto;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public enum BaseResponseStatus {
+public enum ErrorCode {
     /**
      * 2XXX -> JWT 에러
      */
@@ -18,7 +18,7 @@ public enum BaseResponseStatus {
     private final String message;
     private final HttpStatus httpStatus;
 
-    BaseResponseStatus(int code, String message, HttpStatus httpStatus) {
+    ErrorCode(int code, String message, HttpStatus httpStatus) {
         this.code = code;
         this.message = message;
         this.httpStatus = httpStatus;

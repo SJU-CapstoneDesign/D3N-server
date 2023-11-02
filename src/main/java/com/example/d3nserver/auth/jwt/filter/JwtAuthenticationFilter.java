@@ -3,8 +3,8 @@ package com.example.d3nserver.auth.jwt.filter;
 import com.example.d3nserver.auth.jwt.authToken.AuthToken;
 import com.example.d3nserver.auth.jwt.provider.AuthTokenProvider;
 import com.example.d3nserver.auth.jwt.securityUserDetails.SecurityUserDetailsService;
-import com.example.d3nserver.common.base.BaseException;
-import com.example.d3nserver.common.base.BaseResponseStatus;
+import com.example.d3nserver.common.exception.CustomException;
+import com.example.d3nserver.common.dto.ErrorCode;
 import com.example.d3nserver.common.util.jwt.JwtHeaderUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -44,21 +44,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, null);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
-            } catch (BaseException e) {
-                setResponse(response, e.getStatus());
+            } catch (CustomException e) {
+                setResponse(response, e.getErrorCode());
                 return;
             }
             filterChain.doFilter(request, response);
         }
         else
-            setResponse(response, BaseResponseStatus.JWT_EMPTY);
+            setResponse(response, ErrorCode.JWT_EMPTY);
     }
-    private void setResponse(HttpServletResponse response, BaseResponseStatus baseResponseStatus) throws IOException {
+    private void setResponse(HttpServletResponse response, ErrorCode errorCode) throws IOException {
         response.setContentType("application/json;charset=UTF-8");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("message", baseResponseStatus.getMessage());
-        hashMap.put("code", Integer.toString(baseResponseStatus.getCode()));
+        hashMap.put("message", errorCode.getMessage());
+        hashMap.put("code", Integer.toString(errorCode.getCode()));
         JSONObject responseJson = new JSONObject(hashMap);
         response.getWriter().print(responseJson);
     }

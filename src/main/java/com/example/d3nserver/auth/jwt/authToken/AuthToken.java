@@ -1,7 +1,7 @@
 package com.example.d3nserver.auth.jwt.authToken;
 
-import com.example.d3nserver.common.base.BaseException;
-import com.example.d3nserver.common.base.BaseResponseStatus;
+import com.example.d3nserver.common.exception.CustomException;
+import com.example.d3nserver.common.dto.ErrorCode;
 import com.example.d3nserver.user.domain.RoleType;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
@@ -45,10 +45,10 @@ public class AuthToken {
                 .setExpiration(expiry)
                 .compact();
     }
-    public boolean validate() throws BaseException {
+    public boolean validate() throws CustomException {
         return this.getTokenClaims() != null;
     }
-    public Claims getTokenClaims() throws BaseException {
+    public Claims getTokenClaims() throws CustomException {
         try {
             return Jwts.parserBuilder()
                     .setSigningKey(key)
@@ -57,23 +57,23 @@ public class AuthToken {
                     .getBody();
         } catch (SecurityException | SignatureException e) {
             log.info("Invalid JWT Signature");
-            throw new BaseException(BaseResponseStatus.INVALID_JWT_TOKEN);
+            throw new CustomException(ErrorCode.INVALID_JWT_TOKEN);
         } catch (MalformedJwtException e) {
             log.info("Invalid JWT token.");
-            throw new BaseException(BaseResponseStatus.INVALID_JWT_TOKEN);
+            throw new CustomException(ErrorCode.INVALID_JWT_TOKEN);
         } catch (ExpiredJwtException e) {
             log.info("Expired JWT token.");
-            throw new BaseException(BaseResponseStatus.JWT_EXPIRED);
+            throw new CustomException(ErrorCode.JWT_EXPIRED);
         } catch (UnsupportedJwtException e) {
             log.info("Unsupported JWT token.");
-            throw new BaseException(BaseResponseStatus.INVALID_JWT_TOKEN);
+            throw new CustomException(ErrorCode.INVALID_JWT_TOKEN);
         } catch (IllegalArgumentException e) {
             log.info("JWT token compact of handler are invalid.");
-            throw new BaseException(BaseResponseStatus.INVALID_JWT_TOKEN);
+            throw new CustomException(ErrorCode.INVALID_JWT_TOKEN);
         }
     }
 
-    public String getTokenSubject() throws BaseException {
+    public String getTokenSubject() throws CustomException {
         return this.getTokenClaims().getSubject();
     }
 }
