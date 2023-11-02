@@ -1,6 +1,5 @@
 package com.example.d3nserver.news.controller;
 
-import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.news.dto.NewsResponseDto;
 import com.example.d3nserver.news.service.NewsService;

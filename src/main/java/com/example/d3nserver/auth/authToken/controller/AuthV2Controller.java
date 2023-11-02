@@ -3,7 +3,6 @@ package com.example.d3nserver.auth.authToken.controller;
 import com.example.d3nserver.auth.authToken.response.AuthResponse;
 import com.example.d3nserver.auth.authToken.service.AuthService;
 import com.example.d3nserver.common.base.BaseException;
-import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.common.dto.ResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

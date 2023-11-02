@@ -1,7 +1,6 @@
 package com.example.d3nserver.user.controller;
 
 import com.example.d3nserver.auth.jwt.ReqUser;
-import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
