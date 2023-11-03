@@ -1,11 +1,9 @@
 package com.example.d3nserver.common.exception;
 
-import com.example.d3nserver.common.dto.ErrorCode;
 import com.example.d3nserver.common.dto.ErrorResponseDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

@@ -1,5 +1,6 @@
 package com.example.d3nserver.common.dto;
 
+import com.example.d3nserver.common.exception.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

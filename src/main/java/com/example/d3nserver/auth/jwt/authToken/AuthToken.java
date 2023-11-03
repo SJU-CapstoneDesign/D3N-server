@@ -1,7 +1,7 @@
 package com.example.d3nserver.auth.jwt.authToken;
 
 import com.example.d3nserver.common.exception.CustomException;
-import com.example.d3nserver.common.dto.ErrorCode;
+import com.example.d3nserver.common.exception.ErrorCode;
 import com.example.d3nserver.user.domain.RoleType;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.SignatureException;
