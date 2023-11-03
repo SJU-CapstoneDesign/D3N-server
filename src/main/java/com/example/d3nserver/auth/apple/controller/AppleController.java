@@ -3,7 +3,7 @@ package com.example.d3nserver.auth.apple.controller;
 import com.example.d3nserver.auth.apple.request.AppleLoginRequest;
 import com.example.d3nserver.auth.apple.service.AppleAuthService;
 import com.example.d3nserver.auth.authToken.response.AuthResponse;
-import com.example.d3nserver.auth.jwt.ReqUser;
+import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.user.domain.User;
 import io.swagger.v3.oas.annotations.Operation;

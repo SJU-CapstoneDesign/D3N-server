@@ -1,4 +1,4 @@
-package com.example.d3nserver.auth.jwt;
+package com.example.d3nserver.common.annotation;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

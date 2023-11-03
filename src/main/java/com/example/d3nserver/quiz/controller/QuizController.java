@@ -1,6 +1,6 @@
 package com.example.d3nserver.quiz.controller;
 
-import com.example.d3nserver.auth.jwt.ReqUser;
+import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.quiz.dto.QuizResponseDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizRequestDto;
@@ -14,9 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Tag(name = "Quiz API", description = "Quiz 관련 api")
 @RestController
