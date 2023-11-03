@@ -2,6 +2,7 @@ package com.example.d3nserver.quiz.controller;
 
 import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
+import com.example.d3nserver.common.exception.CustomException;
 import com.example.d3nserver.quiz.dto.QuizResponseDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizRequestDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizResponseDto;
@@ -31,7 +32,7 @@ public class QuizController {
     }
 
     @PostMapping(value = "/list/submit")
-    public BaseResponse<List<SolvedQuizResponseDto>> submitQuiz(@ReqUser User user, @RequestBody List<SolvedQuizRequestDto> solvedQuizRequestDtoList){
+    public BaseResponse<List<SolvedQuizResponseDto>> submitQuiz(@ReqUser User user, @RequestBody List<SolvedQuizRequestDto> solvedQuizRequestDtoList) throws CustomException {
         return BaseResponse.ofSuccess(solvedQuizService.saveSolvedQuizList(user, solvedQuizRequestDtoList));
     }
 }
