@@ -1,4 +1,4 @@
-package com.example.d3nserver.common.dto;
+package com.example.d3nserver.common.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

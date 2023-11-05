@@ -4,7 +4,7 @@ import com.example.d3nserver.auth.jwt.authToken.AuthToken;
 import com.example.d3nserver.auth.jwt.provider.AuthTokenProvider;
 import com.example.d3nserver.auth.jwt.securityUserDetails.SecurityUserDetailsService;
 import com.example.d3nserver.common.exception.CustomException;
-import com.example.d3nserver.common.dto.ErrorCode;
+import com.example.d3nserver.common.exception.ErrorCode;
 import com.example.d3nserver.common.util.jwt.JwtHeaderUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

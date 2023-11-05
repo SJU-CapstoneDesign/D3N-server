@@ -4,7 +4,7 @@ import com.example.d3nserver.auth.authToken.response.AuthResponse;
 import com.example.d3nserver.auth.jwt.authToken.AuthToken;
 import com.example.d3nserver.auth.jwt.provider.AuthTokenProvider;
 import com.example.d3nserver.common.exception.CustomException;
-import com.example.d3nserver.common.dto.ErrorCode;
+import com.example.d3nserver.common.exception.ErrorCode;
 import com.example.d3nserver.user.domain.User;
 import com.example.d3nserver.user.service.UserService;
 import lombok.RequiredArgsConstructor;

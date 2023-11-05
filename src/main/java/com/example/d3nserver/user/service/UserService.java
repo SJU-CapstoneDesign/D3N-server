@@ -1,6 +1,5 @@
 package com.example.d3nserver.user.service;
 
-import com.example.d3nserver.auth.jwt.ReqUser;
 import com.example.d3nserver.user.domain.RoleType;
 import com.example.d3nserver.user.domain.User;
 import com.example.d3nserver.user.dto.IsOnBoardingNeededResponseDto;

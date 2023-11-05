@@ -3,7 +3,8 @@ package com.example.d3nserver.auth.apple.controller;
 import com.example.d3nserver.auth.apple.request.AppleLoginRequest;
 import com.example.d3nserver.auth.apple.service.AppleAuthService;
 import com.example.d3nserver.auth.authToken.response.AuthResponse;
-import com.example.d3nserver.auth.jwt.ReqUser;
+import com.example.d3nserver.common.annotation.ApiDocumentResponse;
+import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.user.domain.User;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,6 +30,7 @@ public class AppleV2Controller {
         return ResponseDto.ok(authResponse);
     }
 
+    @ApiDocumentResponse
     @Operation(summary = "애플 회원탈퇴", description = "현재 로그인한 유저를 회원탈퇴 처리한다.")
     @DeleteMapping(value="/unlink")
     public ResponseEntity<Void> appleUnlinkUser(@ReqUser User user) throws IOException{
