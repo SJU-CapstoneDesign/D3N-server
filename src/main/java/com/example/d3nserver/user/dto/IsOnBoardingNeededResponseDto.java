@@ -8,6 +8,6 @@ public class IsOnBoardingNeededResponseDto {
     private Boolean isOnBoardingNeeded;
 
     public IsOnBoardingNeededResponseDto(User user) {
-        this.isOnBoardingNeeded = user.getNickname().isEmpty();
+        this.isOnBoardingNeeded = user.getNickname() == null;
     }
 }

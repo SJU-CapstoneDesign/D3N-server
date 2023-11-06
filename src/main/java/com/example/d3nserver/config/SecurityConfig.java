@@ -26,16 +26,14 @@ public class SecurityConfig{
     @Bean
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring().requestMatchers(
-                "/api/v1/auth/apple/login",
-                "/api/v1/auth/refresh",
-                "/api/v2/auth/refresh",
+                "/api/v1.1/auth/apple/login",
+                "/api/v1.1/auth/refresh",
                 "/swagger-ui/**",
                 "/v3/api-docs/**",
                 /**
                  * Todo: 프론트에서 로그인 작업 완료하면 제거
                  */
-                "/api/v1/**",
-                "/api/v1.1/**"
+                "/api/v1/**"
         );
     }
     @Bean
