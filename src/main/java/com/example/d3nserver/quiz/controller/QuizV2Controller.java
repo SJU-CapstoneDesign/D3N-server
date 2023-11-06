@@ -6,7 +6,7 @@ import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.common.exception.CustomException;
 import com.example.d3nserver.quiz.dto.QuizResponseDto;
 import com.example.d3nserver.quiz.dto.SolvedQuizRequestDto;
-import com.example.d3nserver.quiz.dto.SolvedQuizResponseDto;
+import com.example.d3nserver.quiz.dto.QuizSubmitRequestDto;
 import com.example.d3nserver.quiz.service.QuizService;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
@@ -15,7 +15,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +39,7 @@ public class QuizV2Controller {
     @Operation(summary = "Quiz 제출", description = "퀴즈와 유저가 고른 정답을 받아 저장한다.")
     @ApiResponse(responseCode = "404", description = "해당하는 퀴즈가 존재하지 않음.")
     @PostMapping(value = "/list/submit")
-    public ResponseEntity<List<SolvedQuizResponseDto>> submitQuiz(@ReqUser User user, @RequestBody List<SolvedQuizRequestDto> solvedQuizRequestDtoList) throws CustomException {
+    public ResponseEntity<List<QuizSubmitRequestDto>> submitQuiz(@ReqUser User user, @RequestBody List<SolvedQuizRequestDto> solvedQuizRequestDtoList) throws CustomException {
         return ResponseDto.ok(solvedQuizService.saveSolvedQuizList(user, solvedQuizRequestDtoList));
     }
 }

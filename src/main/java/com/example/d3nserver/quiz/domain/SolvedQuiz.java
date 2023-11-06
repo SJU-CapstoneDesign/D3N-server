@@ -11,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class SolvedQuiz extends BaseEntity {
     @Id
     @GeneratedValue
