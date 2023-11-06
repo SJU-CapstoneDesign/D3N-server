@@ -38,7 +38,7 @@ public class UserService {
     public User saveUserForm(User user, UserDataFormDto inputForm){
         user.setNickname(inputForm.getNickname());
         user.setGender(inputForm.getGender());
-        user.setBirthYear(inputForm.getBirthYear());
+        user.setBirthDay(inputForm.getBirthDay());
         user.setCategoryList(inputForm.getNewsFields());
         save(user);
         return user;

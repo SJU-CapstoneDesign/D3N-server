@@ -5,19 +5,14 @@ import com.example.d3nserver.user.domain.Gender;
 import com.example.d3nserver.user.domain.User;
 import com.example.d3nserver.user.repository.UserRepository;
 import com.example.d3nserver.user.service.UserService;
-import org.junit.Ignore;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -37,7 +32,7 @@ class UserControllerTest {
         User user = new User();
         user.setId(testId);
         user.setGender(Gender.MAN);
-        user.setBirthYear(1999L);
+        user.setBirthDay(1999L);
         user.setNickname(null);
         List<Field> fields = new ArrayList<>();
         fields.add(Field.CULTURE);
