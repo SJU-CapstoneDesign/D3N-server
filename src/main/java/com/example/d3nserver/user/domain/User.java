@@ -23,7 +23,7 @@ public class User extends BaseEntity {
     private String nickname;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private Integer birthYear;
+    private Long birthYear;
     @ElementCollection
     @Enumerated(EnumType.STRING)
     private List<Field> categoryList = new ArrayList<>();

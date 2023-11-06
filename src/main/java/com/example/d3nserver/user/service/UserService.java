@@ -39,7 +39,7 @@ public class UserService {
         user.setNickname(inputForm.getNickname());
         user.setGender(inputForm.getGender());
         user.setBirthYear(inputForm.getBirthYear());
-        user.setCategoryList(inputForm.getCategoryList());
+        user.setCategoryList(inputForm.getNewsFields());
         save(user);
         return user;
     }

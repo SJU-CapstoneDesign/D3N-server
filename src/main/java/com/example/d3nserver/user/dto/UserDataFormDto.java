@@ -12,7 +12,7 @@ public class UserDataFormDto {
     private String nickname;
     @ValidEnum(enumClass = Gender.class)
     private Gender gender;
-    private Integer birthYear;
+    private Long birthYear;
     @ValidEnum(enumClass = Field.class)
-    private List<Field> categoryList;
+    private List<Field> newsFields;
 }
