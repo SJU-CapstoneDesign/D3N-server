@@ -37,7 +37,7 @@ class UserControllerTest {
         User user = new User();
         user.setId(testId);
         user.setGender(Gender.MAN);
-        user.setBirthYear(1999);
+        user.setBirthYear(1999L);
         user.setNickname(null);
         List<Field> fields = new ArrayList<>();
         fields.add(Field.CULTURE);
