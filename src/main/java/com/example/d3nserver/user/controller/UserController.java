@@ -2,7 +2,7 @@ package com.example.d3nserver.user.controller;
 
 import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
-import com.example.d3nserver.quiz.dto.QuizSubmitRequestDto;
+import com.example.d3nserver.quiz.dto.request.QuizSubmitRequestDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.dto.UserDataFormDto;
 import com.example.d3nserver.user.domain.User;

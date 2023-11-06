@@ -1,10 +1,9 @@
 package com.example.d3nserver.user.controller;
 
-import com.example.d3nserver.auth.jwt.securityUserDetails.SecurityUserDetails;
 import com.example.d3nserver.common.annotation.ApiDocumentResponse;
 import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.dto.ResponseDto;
-import com.example.d3nserver.quiz.dto.QuizSubmitRequestDto;
+import com.example.d3nserver.quiz.dto.request.QuizSubmitRequestDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
 import com.example.d3nserver.user.dto.IsOnBoardingNeededResponseDto;
@@ -15,7 +14,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

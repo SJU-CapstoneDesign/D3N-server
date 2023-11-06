@@ -1,17 +1,12 @@
 package com.example.d3nserver.quiz.service;
 
 import com.example.d3nserver.quiz.domain.Quiz;
-import com.example.d3nserver.quiz.domain.SolvedQuiz;
-import com.example.d3nserver.quiz.dto.QuizResponseDto;
-import com.example.d3nserver.quiz.dto.SolvedQuizRequestDto;
+import com.example.d3nserver.quiz.dto.response.QuizResponseDto;
 import com.example.d3nserver.quiz.repository.QuizRepository;
-import com.example.d3nserver.user.domain.User;
-import com.example.d3nserver.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

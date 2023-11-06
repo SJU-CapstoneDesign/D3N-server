@@ -1,4 +1,4 @@
-package com.example.d3nserver.quiz.dto;
+package com.example.d3nserver.quiz.dto.request;
 
 import lombok.Data;
 
