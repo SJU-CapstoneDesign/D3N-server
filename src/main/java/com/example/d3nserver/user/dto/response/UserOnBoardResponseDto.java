@@ -11,14 +11,14 @@ public class UserOnBoardResponseDto {
     private String id;
     private String nickname;
     private Gender gender;
-    private Integer birthYear;
+    private Long birthDay;
     private List<Field> categoryList;
 
     public UserOnBoardResponseDto(User user) {
         id = user.getId();
         nickname = user.getNickname();
         gender = user.getGender();
-        birthYear = user.getBirthYear();
+        birthDay = user.getBirthDay();
         categoryList = user.getNewsFields();
     }
 }
