@@ -30,10 +30,10 @@ public class QuizV2Controller {
     private final SolvedQuizService solvedQuizService;
 
     @ApiDocumentResponse
-    @Operation(summary = "Quiz list", description = "뉴스 id를 입력받아 해당하는 뉴스의 퀴즈 리스트를 반환한다.")
+    @Operation(summary = "Quiz list", description = "뉴스 id를 입력받아 해당하는 뉴스의 퀴즈 리스트를 반환한다. 이때 이미 푼 문제라면 유저가 고른 정답을 함께 반환한다")
     @GetMapping(value = "/list")
-    public ResponseEntity<List<QuizResponseDto>> getQuizList(@RequestParam @Parameter(description="뉴스 id")Long newsId){
-        return ResponseDto.ok(quizService.getQuizList(newsId));
+    public ResponseEntity<List<QuizResponseDto>> getQuizList(@ReqUser User user, @RequestParam @Parameter(description="뉴스 id")Long newsId){
+        return ResponseDto.ok(quizService.getQuizListByUser(user, newsId));
     }
 
     @ApiDocumentResponse

@@ -12,6 +12,7 @@ public class QuizResponseDto {
     private List<String> choiceList;
     private Integer answer;
     private String reason;
+    private Integer selectedAnswer;
 
     public QuizResponseDto(Quiz quiz){
         this.id = quiz.getId();
