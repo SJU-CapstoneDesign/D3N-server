@@ -1,4 +1,4 @@
-package com.example.d3nserver.quiz.dto;
+package com.example.d3nserver.quiz.dto.response;
 
 import com.example.d3nserver.quiz.domain.Quiz;
 import lombok.Data;
@@ -12,6 +12,7 @@ public class QuizResponseDto {
     private List<String> choiceList;
     private Integer answer;
     private String reason;
+    private Integer selectedAnswer;
 
     public QuizResponseDto(Quiz quiz){
         this.id = quiz.getId();

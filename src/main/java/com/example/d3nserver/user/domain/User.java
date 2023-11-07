@@ -26,7 +26,7 @@ public class User extends BaseEntity {
     private Long birthDay;
     @ElementCollection
     @Enumerated(EnumType.STRING)
-    private List<Field> categoryList = new ArrayList<>();
+    private List<Field> newsFields = new ArrayList<>();
     @ElementCollection
     private List<Integer> scrapList = new ArrayList<>();
     private String appleRefreshToken;

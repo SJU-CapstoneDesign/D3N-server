@@ -20,7 +20,11 @@ public enum ErrorCode {
     JWT_EXPIRED(2001, "Access Token has expired", HttpStatus.UNAUTHORIZED),
     INVALID_JWT_TOKEN(2002, "Access Token Is Invalid", HttpStatus.UNAUTHORIZED),
     INVALID_REFRESH_TOKEN(2003, "Refresh Token Is Invalid", HttpStatus.UNAUTHORIZED),
-    INCORRECT_REFRESH_TOKEN(2004, "Refresh Token Mismatched With User's Refresh Token", HttpStatus.UNAUTHORIZED);
+    INCORRECT_REFRESH_TOKEN(2004, "Refresh Token Mismatched With User's Refresh Token", HttpStatus.UNAUTHORIZED),
+    /**
+     * 3XXX -> 비즈니스 에러
+     */
+    QUIZ_NOT_FOUND(3000, "Quiz Not Found", HttpStatus.NOT_FOUND);
 
     private final int code;
     private final String message;

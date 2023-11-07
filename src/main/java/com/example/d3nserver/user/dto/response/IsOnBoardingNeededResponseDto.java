@@ -1,4 +1,4 @@
-package com.example.d3nserver.user.dto;
+package com.example.d3nserver.user.dto.response;
 
 import com.example.d3nserver.user.domain.User;
 import lombok.Data;
