@@ -6,7 +6,7 @@ import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.common.exception.CustomException;
 import com.example.d3nserver.quiz.dto.response.QuizResponseDto;
 import com.example.d3nserver.quiz.dto.request.SolvedQuizRequestDto;
-import com.example.d3nserver.quiz.dto.request.QuizSubmitRequestDto;
+import com.example.d3nserver.quiz.dto.response.QuizSubmitResponseDto;
 import com.example.d3nserver.quiz.service.QuizService;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
@@ -39,7 +39,7 @@ public class QuizV2Controller {
     @Operation(summary = "Quiz 제출", description = "퀴즈와 유저가 고른 정답을 받아 저장한다.")
     @ApiResponse(responseCode = "404", description = "해당하는 퀴즈가 존재하지 않음.")
     @PostMapping(value = "/list/submit")
-    public ResponseEntity<List<QuizSubmitRequestDto>> submitQuiz(@ReqUser User user, @RequestBody List<SolvedQuizRequestDto> solvedQuizRequestDtoList) throws CustomException {
+    public ResponseEntity<List<QuizSubmitResponseDto>> submitQuiz(@ReqUser User user, @RequestBody List<SolvedQuizRequestDto> solvedQuizRequestDtoList) throws CustomException {
         return ResponseDto.ok(solvedQuizService.saveSolvedQuizList(user, solvedQuizRequestDtoList));
     }
 }

@@ -19,18 +19,18 @@ public class SolvedQuiz extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    private Long quizId;
+    @ManyToOne
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
     private Integer selectedAnswer;
-    private Integer quizAnswer;
 
-    public SolvedQuiz(User user, Long quizId, Integer selectedAnswer, Integer quizAnswer){
+    public SolvedQuiz(User user, Quiz quiz, Integer selectedAnswer){
         this.user = user;
-        this.quizId = quizId;
+        this.quiz = quiz;
         this.selectedAnswer = selectedAnswer;
-        this.quizAnswer = quizAnswer;
     }
 
     public boolean getQuizResult(){
-        return selectedAnswer.intValue() == quizAnswer.intValue();
+        return selectedAnswer.equals(quiz.getAnswer());
     }
 }

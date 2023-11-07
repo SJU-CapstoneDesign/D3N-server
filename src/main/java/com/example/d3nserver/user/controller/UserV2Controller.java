@@ -3,7 +3,7 @@ package com.example.d3nserver.user.controller;
 import com.example.d3nserver.common.annotation.ApiDocumentResponse;
 import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.dto.ResponseDto;
-import com.example.d3nserver.quiz.dto.request.QuizSubmitRequestDto;
+import com.example.d3nserver.quiz.dto.response.QuizSubmitResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
 import com.example.d3nserver.user.dto.IsOnBoardingNeededResponseDto;
@@ -37,14 +37,14 @@ public class UserV2Controller {
     @ApiDocumentResponse
     @Operation(summary = "User 푼 문제 리스트", description = "해당 유저가 푼 문제 리스트를 반환한다.")
     @GetMapping("/list/solved")
-    public ResponseEntity<List<QuizSubmitRequestDto>> getUserSolvedQuizList(@ReqUser User user){
+    public ResponseEntity<List<QuizSubmitResponseDto>> getUserSolvedQuizList(@ReqUser User user){
         return ResponseDto.ok(solvedQuizService.getUserSolvedQuizList(user));
     }
 
     @ApiDocumentResponse
     @Operation(summary = "User 틀린 문제 리스트", description = "해당 유저가 푼 문제 중 틀린 문제 리스트를 반환한다.")
     @GetMapping("/list/incorrect")
-    public ResponseEntity<List<QuizSubmitRequestDto>> getUserIncorrectQuizList(@ReqUser User user){
+    public ResponseEntity<List<QuizSubmitResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
         return ResponseDto.ok(solvedQuizService.getUserIncorrectQuizList(user));
     }
 
