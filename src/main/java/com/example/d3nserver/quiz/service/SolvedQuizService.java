@@ -6,6 +6,7 @@ import com.example.d3nserver.quiz.domain.Quiz;
 import com.example.d3nserver.quiz.domain.SolvedQuiz;
 import com.example.d3nserver.quiz.dto.request.SolvedQuizRequestDto;
 import com.example.d3nserver.quiz.dto.response.QuizSubmitResponseDto;
+import com.example.d3nserver.quiz.dto.response.SolvedQuizResponseDto;
 import com.example.d3nserver.quiz.repository.QuizRepository;
 import com.example.d3nserver.quiz.repository.SolvedQuizRepository;
 import com.example.d3nserver.user.domain.User;
@@ -33,11 +34,11 @@ public class SolvedQuizService {
         return solvedQuizList.stream().map(QuizSubmitResponseDto::new).collect(Collectors.toList());
     }
 
-    public List<QuizSubmitResponseDto> getUserSolvedQuizList(User user){
-        return solvedQuizRepository.findAllByUser(user).stream().map(QuizSubmitResponseDto::new).collect(Collectors.toList());
+    public List<SolvedQuizResponseDto> getUserSolvedQuizList(User user){
+        return solvedQuizRepository.findAllByUser(user).stream().map(SolvedQuizResponseDto::new).collect(Collectors.toList());
     }
 
-    public List<QuizSubmitResponseDto> getUserIncorrectQuizList(User user){
-        return solvedQuizRepository.findAllByUser(user).stream().filter(solvedQuiz -> !solvedQuiz.getQuizResult()).map(QuizSubmitResponseDto::new).collect(Collectors.toList());
+    public List<SolvedQuizResponseDto> getUserIncorrectQuizList(User user){
+        return solvedQuizRepository.findAllByUser(user).stream().filter(solvedQuiz -> !solvedQuiz.getQuizResult()).map(SolvedQuizResponseDto::new).collect(Collectors.toList());
     }
 }

@@ -3,6 +3,7 @@ package com.example.d3nserver.user.controller;
 import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.quiz.dto.response.QuizSubmitResponseDto;
+import com.example.d3nserver.quiz.dto.response.SolvedQuizResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.dto.UserDataFormDto;
 import com.example.d3nserver.user.domain.User;
@@ -27,12 +28,12 @@ public class UserController {
     }
 
     @PostMapping("/list/solved")
-    public BaseResponse<List<QuizSubmitResponseDto>> getUserSolvedQuizList(@ReqUser User user){
+    public BaseResponse<List<SolvedQuizResponseDto>> getUserSolvedQuizList(@ReqUser User user){
         return BaseResponse.ofSuccess(solvedQuizService.getUserSolvedQuizList(user));
     }
 
     @PostMapping("/list/incorrect")
-    public BaseResponse<List<QuizSubmitResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
+    public BaseResponse<List<SolvedQuizResponseDto>> getUserIncorrectQuizList(@ReqUser User user){
         return BaseResponse.ofSuccess(solvedQuizService.getUserIncorrectQuizList(user));
     }
 
