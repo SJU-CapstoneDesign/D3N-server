@@ -1,4 +1,4 @@
-package com.example.d3nserver.user.dto;
+package com.example.d3nserver.user.dto.request;
 
 import com.example.d3nserver.common.annotation.ValidEnum;
 import com.example.d3nserver.news.domain.Field;
@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class UserDataFormDto {
+public class UserOnBoardRequestDto {
     private String nickname;
     @ValidEnum(enumClass = Gender.class)
     private Gender gender;

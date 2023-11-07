@@ -2,11 +2,11 @@ package com.example.d3nserver.user.controller;
 
 import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
-import com.example.d3nserver.quiz.dto.response.QuizSubmitResponseDto;
 import com.example.d3nserver.quiz.dto.response.SolvedQuizResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
-import com.example.d3nserver.user.dto.UserDataFormDto;
+import com.example.d3nserver.user.dto.request.UserOnBoardRequestDto;
 import com.example.d3nserver.user.domain.User;
+import com.example.d3nserver.user.dto.response.UserOnBoardResponseDto;
 import com.example.d3nserver.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class UserController {
     private final SolvedQuizService solvedQuizService;
 
     @PostMapping("/onboard")
-    public BaseResponse<User> saveUserForm(@ReqUser User user, @RequestBody UserDataFormDto inputForm){
+    public BaseResponse<UserOnBoardResponseDto> saveUserForm(@ReqUser User user, @RequestBody UserOnBoardRequestDto inputForm){
         return BaseResponse.ofSuccess(userService.saveUserForm(user,inputForm));
     }
 

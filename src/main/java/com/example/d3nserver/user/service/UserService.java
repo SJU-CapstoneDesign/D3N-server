@@ -2,8 +2,9 @@ package com.example.d3nserver.user.service;
 
 import com.example.d3nserver.user.domain.RoleType;
 import com.example.d3nserver.user.domain.User;
-import com.example.d3nserver.user.dto.IsOnBoardingNeededResponseDto;
-import com.example.d3nserver.user.dto.UserDataFormDto;
+import com.example.d3nserver.user.dto.response.IsOnBoardingNeededResponseDto;
+import com.example.d3nserver.user.dto.request.UserOnBoardRequestDto;
+import com.example.d3nserver.user.dto.response.UserOnBoardResponseDto;
 import com.example.d3nserver.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,13 +36,12 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public User saveUserForm(User user, UserDataFormDto inputForm){
+    public UserOnBoardResponseDto saveUserForm(User user, UserOnBoardRequestDto inputForm){
         user.setNickname(inputForm.getNickname());
         user.setGender(inputForm.getGender());
         user.setBirthDay(inputForm.getBirthDay());
-        user.setCategoryList(inputForm.getNewsFields());
-        save(user);
-        return user;
+        user.setNewsFields(inputForm.getNewsFields());
+        return new UserOnBoardResponseDto(userRepository.save(user));
     }
 
     public IsOnBoardingNeededResponseDto getIsOnBoardingNeeded(User user){
