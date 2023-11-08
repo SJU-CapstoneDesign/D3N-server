@@ -1,4 +1,4 @@
-package com.example.d3nserver.time.dto;
+package com.example.d3nserver.time.dto.request;
 
 import lombok.Data;
 

@@ -33,8 +33,7 @@ public class SecurityConfig{
                 /**
                  * Todo: 프론트에서 로그인 작업 완료하면 제거
                  */
-                "/api/v1/**",
-                "/api/v1.1/news/updatingTime"
+                "/api/v1/**"
         );
     }
     @Bean

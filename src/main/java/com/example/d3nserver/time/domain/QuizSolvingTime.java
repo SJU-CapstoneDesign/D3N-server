@@ -6,26 +6,27 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Getter
 @NoArgsConstructor
-public class NewsReadingTime extends BaseEntity {
+public class QuizSolvingTime extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
-    private Long newsId;
+    private Long quizId;
     private String userId;
     private Integer secondTime;
 
-    public NewsReadingTime(String userId, Long newsId){
-        this.newsId = newsId;
+    public QuizSolvingTime(String userId, Long quizId){
         this.userId = userId;
-        this.secondTime = 0;
-    };
+        this.quizId = quizId;
+    }
 
-    public void updateReadingTime(int secondTime){
+    public void updateSolvingTime(int secondTime){
         this.secondTime = secondTime;
     }
+
+
+
 }

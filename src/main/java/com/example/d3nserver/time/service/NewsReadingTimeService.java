@@ -14,7 +14,7 @@ public class NewsReadingTimeService {
 
     public void updateNewsReadingTime(User user, Long newsId, int secondTime){
         NewsReadingTime readingTime = newsReadingTimeRepository.findByUserIdAndNewsId(user.getId(), newsId).orElseGet(
-                ()-> new NewsReadingTime(newsId, user.getId())
+                ()-> new NewsReadingTime(user.getId(), newsId)
         );
         readingTime.updateReadingTime(secondTime);
         newsReadingTimeRepository.save(readingTime);
