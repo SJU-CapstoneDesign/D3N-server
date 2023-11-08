@@ -1,6 +1,5 @@
 package com.example.d3nserver.time.service;
 
-import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.time.domain.NewsReadingTime;
 import com.example.d3nserver.time.repository.NewsReadingTimeRepository;
 import com.example.d3nserver.user.domain.User;
