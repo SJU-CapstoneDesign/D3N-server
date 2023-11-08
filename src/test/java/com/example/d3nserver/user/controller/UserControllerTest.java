@@ -38,7 +38,7 @@ class UserControllerTest {
         fields.add(Field.CULTURE);
         fields.add(Field.LIFE);
         fields.add(Field.IT);
-        user.setCategoryList(fields);
+        user.setNewsFields(fields);
         User savedUser = userService.save(user);
         User findUser = userService.findById(user.getId()).get();
         org.assertj.core.api.Assertions.assertThat(savedUser).isEqualTo(findUser);
