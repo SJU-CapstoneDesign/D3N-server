@@ -13,4 +13,5 @@ import java.util.List;
 public interface NewsRepository extends JpaRepository<News, Integer> {
     List<News> findTop10ByOrderByCreatedAtDesc();
     Page<News> findAllNewsByOrderByCreatedAtDesc(Pageable pageable);
+
 }

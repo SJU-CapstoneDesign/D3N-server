@@ -37,10 +37,16 @@ public class NewsService {
         return todayNewsDtoList;
     }
 
+    public Page<NewsResponseDto> getAllNewsDtoPageListV1(int pageIndex, int pageSize){
+        Page<News> newsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
+        return newsPage.map(NewsResponseDto::new);
+    }
+
     public Page<NewsResponseDto> getAllNewsDtoPageList(@ReqUser User user, int pageIndex, int pageSize){
         Page<News> newsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
         return newsPage.map(news -> getResponseDto(user, news));
     }
+
 
     private NewsResponseDto getResponseDto(User user, News news){
         NewsResponseDto newsResponseDto = new NewsResponseDto(news);
@@ -49,6 +55,7 @@ public class NewsService {
         List<QuizResponseDto> quizResponseDtoList = quizService.getQuizListByUser(user, news.getId());
         newsResponseDto.setQuizAnswerList(quizResponseDtoList.stream().map(QuizResponseDto::getAnswer).collect(Collectors.toList()));
         newsResponseDto.setSelectedAnswerList(quizResponseDtoList.stream().map(QuizResponseDto::getSelectedAnswer).collect(Collectors.toList()));
+
         return newsResponseDto;
     }
 }
