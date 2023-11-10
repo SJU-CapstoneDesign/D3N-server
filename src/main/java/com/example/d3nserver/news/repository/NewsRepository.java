@@ -1,6 +1,5 @@
 package com.example.d3nserver.news.repository;
 
-import com.example.d3nserver.news.domain.Field;
 import com.example.d3nserver.news.domain.News;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,5 +12,4 @@ import java.util.List;
 public interface NewsRepository extends JpaRepository<News, Integer> {
     List<News> findTop10ByOrderByCreatedAtDesc();
     Page<News> findAllNewsByOrderByCreatedAtDesc(Pageable pageable);
-
 }
