@@ -1,9 +1,7 @@
 package com.example.d3nserver.quiz.dto.response;
-
 import com.example.d3nserver.news.dto.NewsResponseDto;
 import com.example.d3nserver.quiz.domain.SolvedQuiz;
 import lombok.Data;
-
 import java.util.List;
 
 @Data

@@ -28,8 +28,8 @@ public class NewsController {
 
     @Operation(summary = "News list", description = "Page index와 Page 크기를 받아 뉴스 페이지를 반환한다.")
     @GetMapping("/list")
-    public BaseResponse<Page<NewsResponseDto>> getAllNews(@ReqUser User user, @RequestParam@Parameter(description="페이지 인덱스, 0부터 시작")int pageIndex, @RequestParam @Parameter(description="페이지 크기")int pageSize) {
-        return BaseResponse.ofSuccess(newsService.getAllNewsDtoPageList(user, pageIndex, pageSize));
+    public BaseResponse<Page<NewsResponseDto>> getAllNews(@RequestParam @Parameter(description="페이지 인덱스, 0부터 시작")int pageIndex, @RequestParam @Parameter(description="페이지 크기")int pageSize) {
+        return BaseResponse.ofSuccess(newsService.getAllNewsDtoPageListV1(pageIndex, pageSize));
     }
 
 }
