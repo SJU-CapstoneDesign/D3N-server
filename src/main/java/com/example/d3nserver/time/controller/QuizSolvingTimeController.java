@@ -29,7 +29,7 @@ public class QuizSolvingTimeController {
 
     @ApiDocumentResponse
     @Operation(summary = "Quiz Solving Update", description = "퀴즈 푸는 시간을 갱신합니다.")
-    @PostMapping("/updatingTime")
+    @PostMapping("/time")
     public ResponseEntity<QuizSolvingTimeResponseDto> updateQuizSolvingTime(@ReqUser User user, @RequestBody @Parameter(description = "quizSolvingTime request Dto",
             content = @Content(schema = @Schema(implementation = QuizSolvingTimeRequestDto.class))) QuizSolvingTimeRequestDto requestDto){
         quizSolvingTimeService.updateQuizSolvingTime(user,requestDto.getQuizId(),requestDto.getSecondTime());
