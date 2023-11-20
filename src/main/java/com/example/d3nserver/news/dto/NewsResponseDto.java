@@ -36,6 +36,7 @@ public class NewsResponseDto {
         this.mediaCompanyId = news.getMediaCompany().getId();
         this.mediaCompanyLogo = news.getMediaCompany().getLogo();
         this.mediaCompanyName = news.getMediaCompany().getName();
+        this.setSecondTime(0);
     }
 
     public String excludingHtmlTag(String htmlContent){

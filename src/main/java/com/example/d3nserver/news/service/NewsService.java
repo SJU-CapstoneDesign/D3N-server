@@ -55,7 +55,6 @@ public class NewsService {
         List<QuizResponseDto> quizResponseDtoList = quizService.getQuizListByUser(user, news.getId());
         newsResponseDto.setQuizAnswerList(quizResponseDtoList.stream().map(QuizResponseDto::getAnswer).collect(Collectors.toList()));
         newsResponseDto.setSelectedAnswerList(quizResponseDtoList.stream().map(QuizResponseDto::getSelectedAnswer).collect(Collectors.toList()));
-
         return newsResponseDto;
     }
 }
