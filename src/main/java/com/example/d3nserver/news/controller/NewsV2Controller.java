@@ -25,7 +25,7 @@ public class NewsV2Controller {
     private final NewsService newsService;
 
     @ApiDocumentResponse
-    @Operation(summary = "News list", description = "Page index와 Page 크기를 받아 뉴스 페이지를 반환한다.")
+    @Operation(summary = "News list", description = "Page index와 Page 크기를 받아 뉴스 페이지를 반환한다. (secondTime은 데이터가 없으면 0, selectedAnswer는 -1을 반환)")
     @GetMapping("/list")
     public ResponseEntity<Page<NewsResponseDto>> getAllNews(@ReqUser User user, @RequestParam @Parameter(description="페이지 인덱스, 0부터 시작")int pageIndex, @RequestParam @Parameter(description="페이지 크기")int pageSize) {
         return ResponseDto.ok(newsService.getAllNewsDtoPageList(user, pageIndex, pageSize));

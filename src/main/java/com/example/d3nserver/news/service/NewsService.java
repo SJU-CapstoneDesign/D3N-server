@@ -42,7 +42,7 @@ public class NewsService {
         return newsPage.map(NewsResponseDto::new);
     }
 
-    public Page<NewsResponseDto> getAllNewsDtoPageList(@ReqUser User user, int pageIndex, int pageSize){
+    public Page<NewsResponseDto> getAllNewsDtoPageList(User user, int pageIndex, int pageSize){
         Page<News> newsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
         return newsPage.map(news -> getResponseDto(user, news));
     }
