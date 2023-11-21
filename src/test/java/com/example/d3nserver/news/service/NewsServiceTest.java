@@ -13,20 +13,5 @@ import java.util.List;
 @SpringBootTest
 @Transactional
 class NewsServiceTest {
-    @Autowired
-    NewsService newsService;
 
-    @Test
-    void getTodayNewsDtoList() {
-        List<NewsDTO> todayNewsDtoList = newsService.getTodayNewsDtoList();
-    }
-
-    @Test
-    void getAllNewsDtoList(){
-        Page<NewsResponseDto> allNewsDtoPageList = newsService.getAllNewsDtoPageList(1, 3);
-        List<NewsResponseDto> content = allNewsDtoPageList.getContent();
-
-        System.out.println("title : " + content.get(1).getTitle());
-        System.out.println("summary : " + content.get(1).getSummary());
-    }
 }

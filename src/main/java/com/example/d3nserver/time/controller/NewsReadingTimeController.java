@@ -25,7 +25,7 @@ public class NewsReadingTimeController {
 
     @ApiDocumentResponse
     @Operation(summary = "NewsReadingTime Update", description = "뉴스 읽는 시간을 갱신합니다.")
-    @PostMapping("/updatingTime")
+    @PostMapping("/time")
     public ResponseEntity<NewsReadingTimeResponseDto> updateNewsReadingTime(@ReqUser User user, @RequestBody @Parameter(description = "newsReadingTime request Dto",
             content = @Content(schema = @Schema(implementation = NewsReadingTimeRequestDto.class))) NewsReadingTimeRequestDto requestDto){
         newsReadingTimeService.updateNewsReadingTime(user,requestDto.getNewsId(),requestDto.getSecondTime());

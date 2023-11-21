@@ -8,6 +8,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class NewsResponseDto {
@@ -20,6 +22,9 @@ public class NewsResponseDto {
     private String mediaCompanyId;
     private String mediaCompanyLogo;
     private String mediaCompanyName;
+    private Integer secondTime;
+    private List<Integer> quizAnswerList;
+    private List<Integer> selectedAnswerList;
 
     public NewsResponseDto(News news) {
         this.id = news.getId();
@@ -31,6 +36,7 @@ public class NewsResponseDto {
         this.mediaCompanyId = news.getMediaCompany().getId();
         this.mediaCompanyLogo = news.getMediaCompany().getLogo();
         this.mediaCompanyName = news.getMediaCompany().getName();
+        this.setSecondTime(0);
     }
 
     public String excludingHtmlTag(String htmlContent){

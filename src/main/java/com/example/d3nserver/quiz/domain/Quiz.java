@@ -17,7 +17,7 @@ public class Quiz extends BaseEntity{
     @ElementCollection
     private List<String> choiceList;
     private Integer answer;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
     @JoinColumn(name="news_id")
     private News news;

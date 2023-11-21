@@ -1,9 +1,11 @@
 package com.example.d3nserver.news.controller;
 
+import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.base.BaseResponse;
 import com.example.d3nserver.news.dto.NewsDTO;
 import com.example.d3nserver.news.dto.NewsResponseDto;
 import com.example.d3nserver.news.service.NewsService;
+import com.example.d3nserver.user.domain.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -27,7 +29,7 @@ public class NewsController {
     @Operation(summary = "News list", description = "Page index와 Page 크기를 받아 뉴스 페이지를 반환한다.")
     @GetMapping("/list")
     public BaseResponse<Page<NewsResponseDto>> getAllNews(@RequestParam @Parameter(description="페이지 인덱스, 0부터 시작")int pageIndex, @RequestParam @Parameter(description="페이지 크기")int pageSize) {
-        return BaseResponse.ofSuccess(newsService.getAllNewsDtoPageList(pageIndex, pageSize));
+        return BaseResponse.ofSuccess(newsService.getAllNewsDtoPageListV1(pageIndex, pageSize));
     }
 
 }
