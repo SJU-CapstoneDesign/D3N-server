@@ -27,7 +27,8 @@ public class SolvedQuizService {
         List<SolvedQuiz> solvedQuizList = new ArrayList<>();
         for(SolvedQuizRequestDto solvedQuizRequestDto : solvedQuizRequestDtoList){
             Quiz quiz = quizRepository.findById(solvedQuizRequestDto.getQuizId()).orElseThrow(() -> new CustomException(ErrorCode.QUIZ_NOT_FOUND));
-            SolvedQuiz solvedQuiz = new SolvedQuiz(user,quiz, solvedQuizRequestDto.getSelectedAnswer());
+            SolvedQuiz solvedQuiz = solvedQuizRepository.findByUserAndQuizId(user, solvedQuizRequestDto.getQuizId()).orElse(new SolvedQuiz(user,quiz, solvedQuizRequestDto.getSelectedAnswer()));
+            solvedQuiz.setSelectedAnswer(solvedQuizRequestDto.getSelectedAnswer());
             solvedQuizList.add(solvedQuiz);
             solvedQuizRepository.save(solvedQuiz);
         }
