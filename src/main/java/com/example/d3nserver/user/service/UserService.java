@@ -2,12 +2,15 @@ package com.example.d3nserver.user.service;
 
 import com.example.d3nserver.user.domain.RoleType;
 import com.example.d3nserver.user.domain.User;
+import com.example.d3nserver.user.dto.request.UserInfoUpdateRequestDto;
 import com.example.d3nserver.user.dto.response.IsOnBoardingNeededResponseDto;
 import com.example.d3nserver.user.dto.request.UserOnBoardRequestDto;
+import com.example.d3nserver.user.dto.response.UserInfoResponseDto;
 import com.example.d3nserver.user.dto.response.UserOnBoardResponseDto;
 import com.example.d3nserver.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -46,5 +49,17 @@ public class UserService {
 
     public IsOnBoardingNeededResponseDto getIsOnBoardingNeeded(User user){
         return new IsOnBoardingNeededResponseDto(user);
+    }
+    @Transactional
+    public UserInfoResponseDto getUserInfo(User user){
+        return new UserInfoResponseDto(user);
+    }
+    @Transactional
+    public UserInfoResponseDto updateUserInfo(User user, UserInfoUpdateRequestDto requestDto){
+        user.setNickname(requestDto.getNickname());
+        user.setGender(requestDto.getGender());
+        user.setBirthDay(requestDto.getBirthDay());
+        user.setNewsFields(requestDto.getNewsFields());
+        return new UserInfoResponseDto(userRepository.save(user));
     }
 }
