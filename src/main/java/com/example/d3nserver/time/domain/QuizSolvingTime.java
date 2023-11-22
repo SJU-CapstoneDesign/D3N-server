@@ -21,6 +21,7 @@ public class QuizSolvingTime extends BaseEntity {
     public QuizSolvingTime(String userId, Long quizId){
         this.userId = userId;
         this.quizId = quizId;
+        this.secondTime = 0;
     }
 
     public void updateSolvingTime(int secondTime){
