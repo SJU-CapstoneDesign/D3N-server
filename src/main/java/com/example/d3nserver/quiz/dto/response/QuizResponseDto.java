@@ -21,7 +21,6 @@ public class QuizResponseDto {
         this.choiceList = quiz.getChoiceList();
         this.answer = quiz.getAnswer();
         this.reason = quiz.getReason();
-        this.selectedAnswer = -1;
         this.secondTime = 0;
     }
 }
