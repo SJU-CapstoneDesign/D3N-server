@@ -5,8 +5,10 @@ import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.quiz.service.SolvedQuizService;
 import com.example.d3nserver.user.domain.User;
+import com.example.d3nserver.user.dto.request.UserInfoUpdateRequestDto;
 import com.example.d3nserver.user.dto.response.IsOnBoardingNeededResponseDto;
 import com.example.d3nserver.user.dto.request.UserOnBoardRequestDto;
+import com.example.d3nserver.user.dto.response.UserInfoResponseDto;
 import com.example.d3nserver.user.dto.response.UserOnBoardResponseDto;
 import com.example.d3nserver.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,4 +41,17 @@ public class UserV2Controller {
         return ResponseDto.ok(userService.getIsOnBoardingNeeded(user));
     }
 
+    @ApiDocumentResponse
+    @Operation(summary = "User 정보 반환", description = "유저의 온보딩 정보를 반환한다.")
+    @GetMapping("/me")
+    public ResponseEntity<UserInfoResponseDto> getUserInfo(@ReqUser User user){
+        return ResponseDto.ok(userService.getUserInfo(user));
+    }
+
+    @ApiDocumentResponse
+    @Operation(summary = "User 온보딩 정보 업데이트", description = "유저의 온보딩 정보를 업데이트한다.")
+    @PatchMapping()
+    public ResponseEntity<UserInfoResponseDto> editUserInfo(@ReqUser User user, @RequestBody UserInfoUpdateRequestDto requestDto){
+        return ResponseDto.ok(userService.updateUserInfo(user, requestDto));
+    }
 }
