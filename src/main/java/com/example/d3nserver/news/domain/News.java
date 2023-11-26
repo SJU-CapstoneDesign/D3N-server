@@ -1,5 +1,6 @@
 package com.example.d3nserver.news.domain;
 
+import com.example.d3nserver.common.annotation.ValidEnum;
 import com.example.d3nserver.common.base.BaseEntity;
 import com.example.d3nserver.mediaCompany.domain.MediaCompany;
 import com.example.d3nserver.quiz.domain.Quiz;
@@ -14,6 +15,7 @@ import java.util.List;
 public class News extends BaseEntity {
     @Id
     private Long id;
+    @ValidEnum(enumClass = Field.class)
     @Enumerated(EnumType.STRING)
     private Field field;
     @Enumerated(EnumType.STRING)

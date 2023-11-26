@@ -1,8 +1,6 @@
 package com.example.d3nserver.news.service;
 
-import com.example.d3nserver.common.annotation.ReqUser;
 import com.example.d3nserver.news.domain.Field;
-import com.example.d3nserver.news.dto.NewsDTO;
 import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.news.dto.NewsResponseDto;
 import com.example.d3nserver.news.repository.NewsRepository;
@@ -29,23 +27,23 @@ public class NewsService {
     private final NewsReadingTimeService newsReadingTimeService;
     private final QuizService quizService;
 
+    public Page<NewsResponseDto> getAllNewsPageList(User user, int pageIndex, int pageSize, Field field){
+        Page<News> newsPage;
+        if(field == Field.DEFAULT)
+            newsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
+        else
+            newsPage = newsRepository.findAllByFieldOrderByCreatedAtDesc(field, PageRequest.of(pageIndex, pageSize));
 
-    public Page<NewsResponseDto> getAllNewsDtoPageListV1(int pageIndex, int pageSize){
-        Page<News> newsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
-        return newsPage.map(NewsResponseDto::new);
-    }
-
-    public Page<NewsResponseDto> getAllNewsDtoPageListV2(User user, int pageIndex, int pageSize){
-        Page<News> newsPage = newsRepository.findAllNewsByOrderByCreatedAtDesc(PageRequest.of(pageIndex, pageSize));
         return newsPage.map(news -> getResponseDto(user, news));
     }
 
-    public List<NewsResponseDto> getTodayNewsListV3(User user){
+
+    public List<NewsResponseDto> getRecentNewsList(User user){
         List<News> todayNewsList = newsRepository.findTopNByOrderByCreatedAtDesc(3);
         return todayNewsList.stream().map((news -> getResponseDto(user, news))).collect(Collectors.toList());
     }
 
-    public List<NewsResponseDto> getUserReferencedNewsListV3(User user){
+    public List<NewsResponseDto> getUserReferencedNewsList(User user){
         List<NewsResponseDto> userReferencedNewsDtoList = new ArrayList<>();
         Field mostReadingTimeField = newsReadingTimeService.mostOfCategoryReadingTime(user);
         List<Field> userFieldList = user.getNewsFields();

@@ -19,4 +19,5 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     @Query("SELECT n FROM News n WHERE n.field = :field ORDER BY n.createdAt DESC LIMIT :n")
     List<News> findTopNByField(@Param("field") Field field, @Param("n") int n);
     Page<News> findAllNewsByOrderByCreatedAtDesc(Pageable pageable);
+    Page<News> findAllByFieldOrderByCreatedAtDesc(Field field, Pageable pageable);
 }
