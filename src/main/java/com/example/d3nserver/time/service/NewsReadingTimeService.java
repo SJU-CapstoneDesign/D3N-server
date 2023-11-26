@@ -1,21 +1,55 @@
 package com.example.d3nserver.time.service;
 
+import com.example.d3nserver.news.domain.Field;
+import com.example.d3nserver.news.domain.News;
+import com.example.d3nserver.news.repository.NewsRepository;
 import com.example.d3nserver.time.domain.NewsReadingTime;
 import com.example.d3nserver.time.repository.NewsReadingTimeRepository;
 import com.example.d3nserver.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @Service
 @RequiredArgsConstructor
 public class NewsReadingTimeService {
     private final NewsReadingTimeRepository newsReadingTimeRepository;
+    private final NewsRepository newsRepository;
 
     public void updateNewsReadingTime(User user, Long newsId, int secondTime){
         NewsReadingTime readingTime = newsReadingTimeRepository.findByUserIdAndNewsId(user.getId(), newsId).orElseGet(
-                ()-> new NewsReadingTime(user.getId(), newsId)
+                ()-> {
+                    News news = newsRepository.findById(newsId).get();
+                    return new NewsReadingTime(user.getId(), news);
+                }
         );
         readingTime.updateReadingTime(secondTime);
         newsReadingTimeRepository.save(readingTime);
+    }
+
+    public Field mostOfCategoryReadingTime(User user){
+        Map<Field, Integer> categoryTimeMap = new HashMap<Field, Integer>();
+        List<NewsReadingTime> newsReadingTimeList = newsReadingTimeRepository.findTop10ByUserIdOrderByCreatedAtDesc(user.getId());
+        if(newsReadingTimeList.isEmpty())
+            return Field.DEFAULT;
+        for(NewsReadingTime readingTime : newsReadingTimeList) {
+            Field field = readingTime.getNews().getField();
+            if(categoryTimeMap.containsKey(field))
+                categoryTimeMap.put(field, categoryTimeMap.get(field) + readingTime.getSecondTime());
+            else
+                categoryTimeMap.put(field, readingTime.getSecondTime());
+        }
+        int mostReadingTime = 0;
+        Field mostReadingTimeField = Field.DEFAULT;
+        for (Field key : categoryTimeMap.keySet()) {
+            if (categoryTimeMap.get(key) > mostReadingTime) {
+                mostReadingTime = categoryTimeMap.get(key);
+                mostReadingTimeField = key;
+            }
+        }
+        return mostReadingTimeField;
     }
 }
