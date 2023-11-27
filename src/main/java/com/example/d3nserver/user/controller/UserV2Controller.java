@@ -62,8 +62,7 @@ public class UserV2Controller {
     @Operation(summary =  "User 추천 카테고리 반환", description = "유저가 읽은 최근 뉴스 10개를 바탕으로, 가장 많이 읽은 뉴스 카테고리를 반환")
     @GetMapping("/reference/field")
     public ResponseEntity<UserReferencedFieldResponseDto> getUserReferencedField(@ReqUser User user){
-        UserReferencedFieldResponseDto fieldResponseDto = new UserReferencedFieldResponseDto(newsReadingTimeService.mostOfCategoryReadingTime(user));
-        return ResponseDto.ok(fieldResponseDto);
+        return ResponseDto.ok(new UserReferencedFieldResponseDto(newsReadingTimeService.getCategoryOfMostReadingTime(user)));
     }
 
 }

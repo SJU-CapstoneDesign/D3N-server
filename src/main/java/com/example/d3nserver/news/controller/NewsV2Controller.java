@@ -40,18 +40,7 @@ public class NewsV2Controller {
     @Operation(summary = "Today News List", description = "type이 Recent일 경우 최신 뉴스만 반환, type이 My일 경우 맞춤형 뉴스만 반환, 지정 하지 않을 시 모두 반환")
     @GetMapping("/today/list")
     public ResponseEntity<List<TodayHomeResponseDto>> getTodayNews(@ReqUser User user, @RequestParam(value = "type", defaultValue = "All") String type) {
-        List<TodayHomeResponseDto> responseDtoList = new ArrayList<>();
-        if(type.equals("Recent")){
-            responseDtoList.add(new TodayHomeResponseDto("Recent",newsService.getRecentNewsList(user)));
-        }
-        else if(type.equals("My")){
-            responseDtoList.add(new TodayHomeResponseDto("My",newsService.getUserReferencedNewsList(user)));
-        }
-        else{
-            responseDtoList.add(new TodayHomeResponseDto("Recent",newsService.getRecentNewsList(user)));
-            responseDtoList.add(new TodayHomeResponseDto("My",newsService.getUserReferencedNewsList(user)));
-        }
-        return ResponseDto.ok(responseDtoList);
+        return ResponseDto.ok(newsService.getTodayNewsList(user,type));
     }
 
 }

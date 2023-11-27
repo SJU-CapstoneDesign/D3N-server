@@ -1,8 +1,10 @@
 package com.example.d3nserver.news.service;
 
+import com.example.d3nserver.common.dto.ResponseDto;
 import com.example.d3nserver.news.domain.Field;
 import com.example.d3nserver.news.domain.News;
 import com.example.d3nserver.news.dto.NewsResponseDto;
+import com.example.d3nserver.news.dto.TodayHomeResponseDto;
 import com.example.d3nserver.news.repository.NewsRepository;
 import com.example.d3nserver.quiz.dto.response.QuizResponseDto;
 import com.example.d3nserver.quiz.service.QuizService;
@@ -37,6 +39,20 @@ public class NewsService {
         return newsPage.map(news -> getResponseDto(user, news));
     }
 
+    public List<TodayHomeResponseDto> getTodayNewsList(User user, String type){
+        List<TodayHomeResponseDto> responseDtoList = new ArrayList<>();
+        if(type.equals("Recent")){
+            responseDtoList.add(new TodayHomeResponseDto("Recent", getRecentNewsList(user)));
+        }
+        else if(type.equals("My")){
+            responseDtoList.add(new TodayHomeResponseDto("My", getUserReferencedNewsList(user)));
+        }
+        else{
+            responseDtoList.add(new TodayHomeResponseDto("Recent", getRecentNewsList(user)));
+            responseDtoList.add(new TodayHomeResponseDto("My", getUserReferencedNewsList(user)));
+        }
+        return responseDtoList;
+    }
 
     public List<NewsResponseDto> getRecentNewsList(User user){
         List<News> todayNewsList = newsRepository.findTopNByOrderByCreatedAtDesc(3);
@@ -45,7 +61,7 @@ public class NewsService {
 
     public List<NewsResponseDto> getUserReferencedNewsList(User user){
         List<NewsResponseDto> userReferencedNewsDtoList = new ArrayList<>();
-        Field mostReadingTimeField = newsReadingTimeService.mostOfCategoryReadingTime(user);
+        Field mostReadingTimeField = newsReadingTimeService.getCategoryOfMostReadingTime(user);
         List<Field> userFieldList = user.getNewsFields();
         Collections.shuffle(userFieldList);
         List<Field> preferencedFiledList = userFieldList.subList(0, Math.min(3, userFieldList.size()));
