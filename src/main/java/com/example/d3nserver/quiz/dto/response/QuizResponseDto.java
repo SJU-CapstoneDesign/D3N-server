@@ -14,6 +14,7 @@ public class QuizResponseDto {
     private String reason;
     private Integer selectedAnswer;
     private Integer secondTime;
+    private Integer level;
 
     public QuizResponseDto(Quiz quiz){
         this.id = quiz.getId();
@@ -22,5 +23,6 @@ public class QuizResponseDto {
         this.answer = quiz.getAnswer();
         this.reason = quiz.getReason();
         this.secondTime = 0;
+        this.level = quiz.getLevel();
     }
 }
