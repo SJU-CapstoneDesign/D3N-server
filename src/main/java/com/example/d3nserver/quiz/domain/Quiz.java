@@ -22,5 +22,5 @@ public class Quiz extends BaseEntity{
     @JoinColumn(name="news_id")
     private News news;
     private String reason;
-    private Integer level;
+    private Integer level = (int)(Math.random() * 3) + 1;
 }
