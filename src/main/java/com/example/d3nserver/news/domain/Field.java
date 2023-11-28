@@ -1,6 +1,7 @@
 package com.example.d3nserver.news.domain;
 
 public enum Field {
+    DEFAULT,
     POLITICS,
     ECONOMY,
     SOCIETY,
@@ -11,4 +12,5 @@ public enum Field {
     IT,
     SCIENCE,
     ENTERTAINMENTS
+
 }
